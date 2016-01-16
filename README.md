@@ -20,5 +20,5 @@ Possible Features:
 
 * Complete trawling of whole boards or even all of 4chan, not just one thread.
 * Automated keyword regognition, ie: "Download all threads with 'Taylor Swift' in the title"
-* Something steno-related.
+* Encrypting the archives. 
 * Rudimentary image recognition?
