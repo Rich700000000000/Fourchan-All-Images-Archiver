@@ -8,6 +8,8 @@ import urllib
 import time
 import os
 import sys
+#Forgot to add this.
+import string
 
 #Gets the command line input and turns it into a url.
 url = sys.argv[1]
@@ -24,7 +26,8 @@ nameA = (soup.title.string)
 name = nameA.strip()
 board,thread,dis,chan = name.split(" - ")
 fixedBoard = board.replace("/", "_")
-alphabet = string.ascii_letters + string.digits + "'[];=+~()#&,.!-_ ")
+#Removed an excess ")" that was causing an error.
+alphabet = string.ascii_letters + string.digits + "'[];=+~()#&,.!-_ "
 newthread = ''
 for char in thread: 
     if char in alphabet:        
