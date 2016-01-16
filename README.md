@@ -2,6 +2,10 @@ Script to download all the images in a 4chan thread.
 
 Warning: I've never used Git before, so if I accidentally screw up and delete the entire repo...I won't do that. 
 
+Use:
+
+        python3 FCAIA.py http://boards.4chan.org/g/thread/52438119/edc-every-day-carry
+
 To Do:
 
 * Make it incorporate the original file names into the image names.
