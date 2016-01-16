@@ -10,14 +10,13 @@ import os
 import sys
 
 #Gets the command line input and turns it into a url.
-arg1 = sys.argv[1]
-url = arg1
+url = sys.argv[1]
 
 #In 5.2, I added a UserAgent to hopefully combat the rate limiting.
 user_agent = "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.93 Safari/537.36"
 req = urllib.request.Request(url, headers={'User-Agent': user_agent})
-content = (urllib.request.urlopen(req).read())
-soup = (BeautifulSoup(content))
+content = urllib.request.urlopen(req).read()
+soup = BeautifulSoup(content)
 
 
 #Makes the folder, a suprisingly complex process. I should probably turn this into a function at some point.
@@ -25,7 +24,7 @@ nameA = (soup.title.string)
 name = nameA.strip()
 board,thread,dis,chan = name.split(" - ")
 fixedBoard = board.replace("/", "_")
-alphabet = set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'[];=+~()#&,.!-_ ")
+alphabet = string.ascii_letters + string.digits + "'[];=+~()#&,.!-_ ")
 newthread = ''
 for char in thread: 
     if char in alphabet:        
