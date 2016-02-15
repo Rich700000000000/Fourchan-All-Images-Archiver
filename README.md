@@ -15,6 +15,11 @@ To Do:
    - wkhtmltopdf
    - princexml
 
+Done:
+
+* Make it incorporate the original file names into the image names.
+
+
 Possible Features:
 
 * Complete trawling of whole boards or even all of 4chan, not just one thread.
