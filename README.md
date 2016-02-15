@@ -8,7 +8,6 @@ Use:
 
 To Do:
 
-* Make it incorporate the original file names into the image names.
 * Make it turn the folder into an archive, storage only.
 * Make it turn the folder into an archive, lossless compression.
 * Make it save a copy of the actual thread, either saved as PDF or XML.
