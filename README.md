@@ -18,6 +18,7 @@ To Do:
 Done:
 
 * Make it incorporate the original file names into the image names.
+* Fixed error causing all images to be saved as jpg.
 
 
 Possible Features:
