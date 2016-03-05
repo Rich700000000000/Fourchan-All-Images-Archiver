@@ -10,6 +10,7 @@ import time
 import os
 import sys
 import string
+import os.path
 
 #Gets the command line input and turns it into a url.
 url = sys.argv[1]
@@ -113,7 +114,9 @@ while loopCount < threadCount:
       fileURLTemp         =  fileURL[loopCount]
       print("File Url:    " + fileURLTemp)
 
-      fileNameFinal = (fileNumberTemp + " - ON[" + fileNameTemp + "].jpg")
+      extTR = os.path.splitext(fileNameTemp)[1]
+
+      fileNameFinal = (fileNumberTemp + " - ON[" + fileNameTemp + "]" + extTR)
 
       
       print ("File:        " + fileNameFinal)
