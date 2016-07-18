@@ -13,8 +13,11 @@ import string
 import os.path
 
 #Gets the command line input and turns it into a url.
-url = sys.argv[1]
-
+try: 
+   url = sys.argv[1]
+except IndexError:
+   print ("Error: No URL Found")
+   raise SystemExit
 
 #In 5.2, I added a UserAgent to hopefully combat the rate limiting.
 user_agent = "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.93 Safari/537.36"
