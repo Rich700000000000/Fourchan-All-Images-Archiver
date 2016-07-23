@@ -19,11 +19,3 @@ Done:
 
 * Make it incorporate the original file names into the image names.
 * Fixed error causing all images to be saved as jpg.
-
-
-Possible Features:
-
-* Complete trawling of whole boards or even all of 4chan, not just one thread.
-* Automated keyword regognition, ie: "Download all threads with 'Taylor Swift' in the title"
-* Encrypting the archives. 
-* Rudimentary image recognition? 
