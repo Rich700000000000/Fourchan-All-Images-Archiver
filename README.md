@@ -1,4 +1,4 @@
-Script to download all the images in a 4chan thread.
+Script to download all the images/gifs/WebM in a 4chan thread.
 
 Warning: I've never used Git before, so if I accidentally screw up and wipe out everything send me a message to get it resolved.
 
