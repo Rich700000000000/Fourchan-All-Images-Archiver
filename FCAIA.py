@@ -7,6 +7,7 @@ import shutil
 import urllib
 import time
 import os
+import re
 import sys
 import string
 import os.path
@@ -24,20 +25,23 @@ def getPageSoup(pageurl):
 
 #From now on, all the values will be stored in arrays. At some point it's going to dump to a log
 #file, and this will help.
-def getNameNumUrls(pgs):
-	fileName   = []
-	fileNumber = []
-	fileURL    = []
-	#So yeah, I completely remade the extractor function, 
-	for link in pgs.find_all('a', {'target': '_blank'}):
-	    realFilenameString = (str(link))  
-	    if ("fileThumb") not in realFilenameString:
-		    if ("i.4cdn.org") in realFilenameString:
-		       #Connects all the values. 
-		       fileName.append(realFilenameString.split('">')[1][:-4])
-		       fileNumber.append(realFilenameString.split("rg/")[1].split(".")[0].split("/")[1])
-		       fileURL.append(realFilenameString.split('" t')[0][8:].replace("//", "https://")[1:])
-	return fileName, fileNumber, fileURL
+def getNameNumUrls(soup):
+	ltm_a = []
+	ltm_b = []
+	ltm_c = []
+	for link in soup.find_all('div', {'class': 'fileText'}):
+		ltm_a.append(link.a['href'])
+		try:
+			ltm_b.append(link.a['title'])
+		except AttributeError: # element does not have .name attribute
+			ltm_b.append(link.a.text)
+		except KeyError: # element does not have a class
+			ltm_b.append(link.a.text)
+		fn = (re.findall(r'\d{5,20}', (link.a['href'])))[0]
+		ltm_c.append(fn)
+
+
+	return ltm_b, ltm_c, ltm_a 
 
 
 #A filecount function I got from StackOverflow.
@@ -45,7 +49,9 @@ def filecount(DIR): return len([name for name in os.listdir(DIR) if os.path.isfi
 
 #The completed fucnction for constructing 4chan folders. 
 def makeChanDir(soup):
-    name = (soup.title.string).strip()
+#    name = (soup.title.string).strip()
+    nameA = (soup.title.string)
+    name = nameA.strip()
     boardOld,threadRaw,dis,chan = name.split(" - ")
     board = boardOld.replace("/", " ").upper()
     alphabet = string.ascii_letters + string.digits + ("'[];=+~()#&"",.!-_ ")
@@ -116,7 +122,7 @@ def main():
 
 
 
-	      response = requests.get(fileURLTemp, stream=1)
+	      response = requests.get("https:" + fileURLTemp, stream=1)
 	      with open((os.path.join(dcwd, fileNameFinal)), 'wb') as out_file:
 	        print ("Downloading: " + fileNameFinal)
 	        shutil.copyfileobj(response.raw, out_file)
@@ -128,3 +134,46 @@ def main():
 	      loopCount += 1
  
 main()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
