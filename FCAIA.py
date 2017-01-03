@@ -62,14 +62,18 @@ def makeChanDir(soup):
            newName = ("Site-[ 4chan ] - Board-[" + board + "] - Thread-[ " + thread +" ]")
     return newName
 
-def main():
-	#The actual constructor, to make the folders.
-	try: 
-	   url = sys.argv[1]
-	except IndexError:
-	   print ("Error: No URL Found")
-	   raise SystemExit
+def getAllArgs(howOut="return"):
+	allArgs = sys.argv
+	allArgs = allArgs[1:]
 
+
+	if howOut == "print": 
+		print (len(allArgs))
+		for i in allArgs: print (i)
+	elif howOut == "return":
+		return allArgs
+
+def everything(url):
 	soup = getPageSoup(url)
 	newName = makeChanDir(soup)
 	dcwd = ((os.getcwd()) + "/" + newName)
@@ -132,7 +136,16 @@ def main():
 	      print ("Downloaded:  " + fileNameFinal + "\n")
 	      
 	      loopCount += 1
- 
+
+
+
+
+def main():
+	r = getAllArgs()
+	for n, i in enumerate(r):
+		print ("Page {}: {}".format(n, i))
+		everything(i)
+
 main()
 
 
