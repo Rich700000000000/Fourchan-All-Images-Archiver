@@ -125,15 +125,21 @@ def everything(url):
 	      print ("File:        " + fileNameFinal)
 
 
+	      try:
+	        response = requests.get("https:" + fileURLTemp, stream=1)
+	        with open((os.path.join(dcwd, fileNameFinal)), 'wb') as out_file:
+	          print ("Downloading: " + fileNameFinal)
+	          shutil.copyfileobj(response.raw, out_file)
+	        del response
+	        print ("Downloaded:  " + fileNameFinal + "\n")
+	      except OSError:
+	       print ("Error on image: {}\n".format(fileNameFinal))
+	      except urllib.error.URLError:
+	       print ("Network Error on image: {}\n".format(fileNameFinal))
+	      except Exception:
+	       print ("Exception on image: {}\n".format(fileNameFinal))
 
-	      response = requests.get("https:" + fileURLTemp, stream=1)
-	      with open((os.path.join(dcwd, fileNameFinal)), 'wb') as out_file:
-	        print ("Downloading: " + fileNameFinal)
-	        shutil.copyfileobj(response.raw, out_file)
-	      del response
-	      
 
-	      print ("Downloaded:  " + fileNameFinal + "\n")
 	      
 	      loopCount += 1
 
