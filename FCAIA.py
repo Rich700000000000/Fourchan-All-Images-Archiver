@@ -143,14 +143,15 @@ def everything(url):
 	      
 	      loopCount += 1
 
-
+	return newName, threadCount
 
 
 def main():
 	r = getAllArgs()
 	for n, i in enumerate(r):
 		print ("Page {}: {}".format(n, i))
-		everything(i)
+		e,t = everything(i)
+	print ("{} files in: '{}'".format(t,e))
 
 main()
 
