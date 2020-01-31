@@ -1,19 +1,16 @@
 #!/usr/bin/env python3
 #The lybraries required for this code: The first three are downloaders, the fourth for the file io, 5 & 6 are handleers and sys is for the command line input.
-from urllib.request import urlopen
-from bs4 import BeautifulSoup
-import requests
-import shutil
-import urllib
-import time
 import os
 import re
 import sys
+import time
+import shutil
+import urllib
 import string
 import os.path
-
-
-#Gets the command line input and turns it into a url.
+import requests
+from bs4 import BeautifulSoup
+from urllib.request import urlopen
 
 #In 5.2, I added a UserAgent to hopefully combat the rate limiting.
 def getPageSoup(pageurl):
@@ -62,6 +59,7 @@ def makeChanDir(soup):
            newName = ("Site-[ 4chan ] - Board-[" + board + "] - Thread-[ " + thread +" ]")
     return newName
 
+#Returns a list of all of the arguments.
 def getAllArgs(howOut="return"):
 	allArgs = sys.argv
 	allArgs = allArgs[1:]
@@ -94,12 +92,11 @@ def everything(url):
 	   newStart = False
 
 
-	#The Already downloaded Images
+	#The already downloaded Images
 	print("Folder Name: " + str(newName))
 	print("AD Images:   " + str(fileInt))
 	#And the new downloader, as well:
 	while loopCount < threadCount:
-
 
 
 	      print("Image:       " + (str(loopCount + 1)) + "/" + (str(threadCount)))
@@ -154,46 +151,3 @@ def main():
 	print ("{} files in: '{}'".format(t,e))
 
 main()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
