@@ -17,7 +17,7 @@ def getPageSoup(pageurl):
 	user_agent = "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.93 Safari/537.36"
 	req = urllib.request.Request(pageurl, headers={'User-Agent': user_agent})
 	content = urllib.request.urlopen(req).read()
-	soup = (BeautifulSoup(content))
+	soup = (BeautifulSoup([content], "lxml"))
 	return soup
 
 #From now on, all the values will be stored in arrays. At some point it's going to dump to a log
@@ -56,7 +56,8 @@ def makeChanDir(soup):
     for char in threadRaw: 
         if char in alphabet:
            thread+=char
-           newName = ("Site-[ 4chan ] - Board-[" + board + "] - Thread-[ " + thread +" ]")
+#           newName = ("Site-[ 4chan ] - Board-[" + board + "] - Thread-[ " + thread +" ]")
+           newName = ("Site-[ 4chan ] - Board-[ {} ] - Thread-[ {} ]".format(board, thread))
     return newName
 
 #Returns a list of all of the arguments.
