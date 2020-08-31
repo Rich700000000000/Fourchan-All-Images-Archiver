@@ -10,7 +10,4 @@ To Do:
 * Make it turn the folder into an archive using lossless compression.
 * Make it save a copy of the actual thread, either saved as PDF or XML.
 
-Done:
 
-* Make it incorporate the original file names into the image names.
-* Fixed error causing all images to be saved as jpg.

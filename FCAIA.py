@@ -41,8 +41,9 @@ def getNameNumUrls(soup):
 	return ltm_b, ltm_c, ltm_a 
 
 
-#A filecount function I got from StackOverflow.
-def filecount(DIR): return len([name for name in os.listdir(DIR) if os.path.isfile(os.path.join(DIR, name))])
+#A filecount function.
+def filecount(DIR):
+	return len([name for name in os.listdir(DIR) if os.path.isfile(os.path.join(DIR, name))])
 
 #The completed fucnction for constructing 4chan folders. 
 def makeChanDir(soup):
@@ -72,6 +73,7 @@ def getAllArgs(howOut="return"):
 	elif howOut == "return":
 		return allArgs
 
+#Main program function, downloads images and puts them into folders.
 def everything(url):
 	soup = getPageSoup(url)
 	newName = makeChanDir(soup)
@@ -143,7 +145,7 @@ def everything(url):
 
 	return newName, threadCount
 
-
+#Main function. Loops over all passed thread urls.
 def main():
 	r = getAllArgs()
 	for n, i in enumerate(r):
