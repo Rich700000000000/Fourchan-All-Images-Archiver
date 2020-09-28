@@ -14,7 +14,7 @@ from urllib.request import urlopen
 
 #In 5.2, I added a UserAgent to hopefully combat the rate limiting.
 def getPageSoup(pageurl):
-	user_agent = "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.93 Safari/537.36"
+	user_agent = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/81.0.4044.138 Chrome/81.0.4044.138 Safari/537.36"
 	req = urllib.request.Request(pageurl, headers={'User-Agent': user_agent})
 	content = urllib.request.urlopen(req).read()
 	soup = (BeautifulSoup(content, "lxml"))
@@ -153,4 +153,5 @@ def main():
 		e,t = everything(i)
 	print ("{} files in: '{}'".format(t,e))
 
-main()
+if __name__ == "__main__":
+	main()
