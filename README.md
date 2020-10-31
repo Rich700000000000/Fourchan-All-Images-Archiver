@@ -1,6 +1,6 @@
 Script to download all the images/gifs/WebM in a 4chan thread.
 
-Use:
+Usage:
 
         python3 FCAIA.py http://boards.4chan.org/g/thread/52438119/edc-every-day-carry
 
